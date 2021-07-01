@@ -34,9 +34,16 @@ class Detector:
                     'Cam_con_lai',
                     'Nguy_hiem',
                     'Hieu_lenh']
+
+        total = 0
+        class_count = [0] * 7
         
         for i in range(len(class_ids)):
             if scores[i] >= 0.5:
+
+                total += 1
+                class_count[class_ids[i]] += 1
+
                 for box in boxes[i]:
                     start = (int(box[0]), int(box[1]))
                     end = (int(box[2]), int(box[3]))
@@ -46,3 +53,4 @@ class Detector:
                     cv2.putText(image, str(classes[color]), start, cv2.FONT_HERSHEY_PLAIN, 1, (random.randint(0, 255), random.randint(0, 255), 255), 2)
 
         cv2.imwrite('static/images/output.jpg', image)
+        return total, class_count
