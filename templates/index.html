@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
     <head>
-        <title>OCR Identity Card</title>
+        <title>Traffic Sign Recognition</title>
 
         <!--CSS file-->
         <!-- <link href="{{ url_for('static', path='styles.css') }}" rel="stylesheet"> -->
@@ -64,6 +64,13 @@
                             <form action="/result" method="POST" enctype="multipart/form-data">
                                 <div class="upload-image">
                                     <input class="upload" accept="image/*" type="file" name="image" autocomplete="off" required>
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <label style="font-size: large;" for="model">Chọn mô hình:</label> 
+                                    <select name="model">
+                                        <option value="faster_rcnn">Faster RCNN</option>
+                                        <option value="retinanet">Retinanet</option>
+                                    </select>
                                 </div>
                                 <button type="submit" class="mt-4 mb-3 btn-try-now btn btn-primary">
                                     Nhận dạng
