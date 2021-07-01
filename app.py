@@ -5,7 +5,7 @@ import cv2
 import os
 import shutil
 
-from fastapi import FastAPI, Request, File, UploadFile
+from fastapi import FastAPI, Request, File, UploadFile, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -24,13 +24,17 @@ async def index(request: Request):
     })
 
 @app.post("/result", response_class=HTMLResponse)
-async def recognition(request: Request, image: UploadFile = File(...)):
+async def recognition(request: Request, image: UploadFile = File(...), model: str = Form(...)):
     with open("./static/images/destination.jpg", "wb") as buffer:
         shutil.copyfileobj(image.file, buffer)
 
+    if model=='faster_rcnn':
+        detector = Detector('libs/detectron2/configs/COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x.yaml', 'models/weights/model_final_faster_rcnn.pth')
+    elif model == 'retinanet':
+        detector = Detector('libs/detectron2/configs/COCO-Detection/retinanet_R_101_FPN_3x.yaml', 'models/weights/model_final_retinanet.pth')
+
     image = cv2.imread('static/images/destination.jpg')
     
-    detector = Detector('libs/detectron2/configs/COCO-Detection/retinanet_R_101_FPN_3x.yaml', 'models/weights/model_final_retinanet.pth')
     total, class_count = detector.predict(image)
 
     result = {
