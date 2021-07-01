@@ -77,10 +77,22 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 text-center right">
+            <div class="col-lg-12 text-center">
                 <div class="text-center">
                     <img class="uploaded_image" src="./static/images/output.jpg">
                 </div>
+            </div>
+
+            <hr>
+            <div class="col-lg-6">
+                <h2>Thông tin chi tiết</h2>
+                <ul>
+                    {% for key, value in result.items() %}
+                        <li style="display:inline">
+                            <p style="font-weight: bold; font-size: 20px;">{{ key|e }}: <span style="font-weight: lighter;">{{ value|e }}</span></p>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
             
         </div>
