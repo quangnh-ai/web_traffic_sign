@@ -45,4 +45,4 @@ class Detector:
                     cv2.rectangle(image, start, end, (random.randint(0, 255), random.randint(0, 255), 255), 1)
                     cv2.putText(image, str(classes[color]), start, cv2.FONT_HERSHEY_PLAIN, 1, (random.randint(0, 255), random.randint(0, 255), 255), 2)
 
-        cv2.imwrite('output.jpg', image)
+        cv2.imwrite('static/images/output.jpg', image)

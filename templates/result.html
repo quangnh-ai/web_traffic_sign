@@ -37,8 +37,12 @@
                 transition: 0.4s;
             }
 
+            .left {
+                border-right: 5px solid #EEEEEE;
+            }
+
             .uploaded_image{
-                width: 300px;
+                width: 1260px;
             }
 
             .upload{
@@ -56,35 +60,29 @@
         <div class="container">
             <div class="row">
                 <!--Upload Image-->
-                <div class="col-lg-12 text-center left">
-                    <h1>Tải ảnh lên</h1>
-
+                <div class="col-lg-12" id="upload-image">
+                    <h1 class="text-center">Tải ảnh lên</h1>
                     <div class="content text-center">
-                        <div class="text-center">                            
-                            <form action="/result" method="POST" enctype="multipart/form-data">
-                                <div class="upload-image">
-                                    <input class="upload" accept="image/*" type="file" name="image" autocomplete="off" required>
-                                </div>
-                                <button type="submit" class="mt-4 mb-3 btn-try-now btn btn-primary">
-                                    Nhận dạng
-                                </button>
-                                <!-- <img src="/static/images/icon-upload-md.png" class="clickable"> -->
+                        <div class="text-center">
+                            <img class="uploaded_image" src="./static/images/destination.jpg">
+                        </div>
+
+                        <div class="my-4 text-center d-inline-block">
+                            <form method="GET" action="/">
+                                <button type="submit" class="btn-upload-image">Tải ảnh lên</button>
                             </form>
                         </div>
                     </div>
-
-                </div>        
-            </div>
-
-            <hr>
-
-            <div class="row">
-                <div class="col-lg-12 text-center right">
-                    <h1 class="text-center">Kết Quả Nhận Dạng</h1>
                     
                 </div>
             </div>
 
+            <div class="col-lg-6 text-center right">
+                <div class="text-center">
+                    <img class="uploaded_image" src="./static/images/output.jpg">
+                </div>
+            </div>
+            
         </div>
     </body>
 </html>
