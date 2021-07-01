@@ -31,8 +31,20 @@ async def recognition(request: Request, image: UploadFile = File(...)):
     image = cv2.imread('static/images/destination.jpg')
     
     detector = Detector('libs/detectron2/configs/COCO-Detection/retinanet_R_101_FPN_3x.yaml', 'models/weights/model_final_retinanet.pth')
-    detector.predict(image)
+    total, class_count = detector.predict(image)
+
+    result = {
+        "Tổng số biển báo phát hiện được": total,
+        "Cấm ngược chiều": class_count[0],
+        "Cấm dừng và đỗ": class_count[1],
+        "Cấm rẽ": class_count[2],
+        "Giới hạn tốc độ": class_count[3],
+        "Cấm còn lại": class_count[4],
+        "Nguy hiểm": class_count[5],
+        "Hiệu lệnh": class_count[6]
+    }
     
     return templates.TemplateResponse("result.html",{
-        "request": request
+        "request": request,
+        "result": result
     })
