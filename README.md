@@ -13,3 +13,8 @@ pip install -r requirements.txt
 cd libs\detectron2
 
 python setup.py build develop
+
+## Download model weights:
+Retinanet: https://drive.google.com/file/d/15vaA8QHE6g2vL_6x2fv3dX2PPjAoBMOj/view?usp=sharing
+
+Faster RCNN: https://drive.google.com/file/d/16iDWG_BYBAaITTg8RkXdqiQzABm_5tBf/view?usp=sharing
