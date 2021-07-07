@@ -17,3 +17,4 @@ uvicorn
 aiofiles
 jinja2
 python-multipart
+pypiwin32

@@ -29,9 +29,9 @@ async def recognition(request: Request, image: UploadFile = File(...), model: st
         shutil.copyfileobj(image.file, buffer)
 
     if model=='faster_rcnn':
-        detector = Detector('libs/detectron2/configs/COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x.yaml', 'models/weights/model_final_faster_rcnn.pth')
+        detector = Detector('libs/detectron2/configs/COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x.yaml', 'models/model_final_faster_rcnn.pth')
     elif model == 'retinanet':
-        detector = Detector('libs/detectron2/configs/COCO-Detection/retinanet_R_101_FPN_3x.yaml', 'models/weights/model_final_retinanet.pth')
+        detector = Detector('libs/detectron2/configs/COCO-Detection/retinanet_R_101_FPN_3x.yaml', 'models/model_final_retinanet.pth')
 
     image = cv2.imread('static/images/destination.jpg')
     

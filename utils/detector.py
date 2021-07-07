@@ -39,7 +39,7 @@ class Detector:
         class_count = [0] * 7
         
         for i in range(len(class_ids)):
-            if scores[i] >= 0.5:
+            if scores[i] >= 0.65:
 
                 total += 1
                 class_count[class_ids[i]] += 1
