@@ -20,4 +20,5 @@ Retinanet: https://drive.google.com/file/d/15vaA8QHE6g2vL_6x2fv3dX2PPjAoBMOj/vie
 Faster RCNN: https://drive.google.com/file/d/16iDWG_BYBAaITTg8RkXdqiQzABm_5tBf/view?usp=sharing
 
 ### Run App:
-run cmd line: uvicorn app:app
+- Step 1: Create a folder name models and move all model weights to this folder
+- Step 2: Run cmd line: uvicorn app:app
