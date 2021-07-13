@@ -1,5 +1,6 @@
 from fastapi import responses
 from utils.detector import Detector
+from utils.yolo_detector import Yolo_Detector
 
 import cv2
 import os
@@ -32,6 +33,8 @@ async def recognition(request: Request, image: UploadFile = File(...), model: st
         detector = Detector('libs/detectron2/configs/COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x.yaml', 'models/model_final_faster_rcnn.pth')
     elif model == 'retinanet':
         detector = Detector('libs/detectron2/configs/COCO-Detection/retinanet_R_101_FPN_3x.yaml', 'models/model_final_retinanet.pth')
+    elif model == 'yolo':
+        detector = Yolo_Detector('models/yolo/yolov4_Traffic.cfg', 'models/yolo/yolov4_Traffic_last.weights', 'models/yolo/obj.names')
 
     image = cv2.imread('static/images/destination.jpg')
     
